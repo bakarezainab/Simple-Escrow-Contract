@@ -1,66 +1,28 @@
-## Foundry
+# SimpleEscrow Contract
+The escrow contract facilitates secure transactions between a buyer and seller with an arbiter for dispute resolution:
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Participants: Buyer (initiates and funds), Seller (receives funds), Arbiter (resolves disputes)
+###Key Features:
 
-Foundry consists of:
+Buyer deposits funds during contract creation
+Buyer can approve the transaction to release funds to seller
+Buyer can raise disputes that an arbiter can resolve
+Buyer can get a refund if needed
+Proper state tracking with isApproved, isDisputed, and isResolved flags
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-## Documentation
+### Unit Tests (SimpleEscrowTest.sol)
 
-https://book.getfoundry.sh/
+Tests all contract functions with specific inputs
+Verifies correct state transitions
+Tests access control (only specific roles can call certain functions)
+Tests proper event emissions
+Verifies proper revert conditions
 
-## Usage
+### Fuzz Tests (SimpleEscrowFuzzTest.sol)
 
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Tests with randomized inputs to find edge cases
+Uses bound() function to keep test values reasonable
+Tests various scenarios with randomized deposit amounts
+Tests interaction sequences and failure conditions
+Combines multiple functions to test complex scenarios
