@@ -20,7 +20,7 @@ Tests proper event emissions
 Verifies proper revert conditions
 
 ### Fuzz Tests (SimpleEscrowFuzzTest.sol)
-Kindly check the #### test-images to check the passed tests
+# Kindly check the test-images to check the passed tests
 Tests with randomized inputs to find edge cases
 Uses bound() function to keep test values reasonable
 Tests various scenarios with randomized deposit amounts
